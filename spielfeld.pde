@@ -51,7 +51,7 @@ public class Spielfeld{
          print(spielfeld[j][i]);
          print("|");
       }
-      print("\n")
+      print("\n");
     }
   }
   
