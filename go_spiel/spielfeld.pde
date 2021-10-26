@@ -6,6 +6,7 @@ public class Spielfeld {
 
   Spielfeld() {
     erstelle_array();
+    zeichne_hintergrund();
   }
 
   void erstelle_array() {
@@ -21,6 +22,7 @@ public class Spielfeld {
   }
 
   void zeichne_hintergrund() {
+    size(832, 823);
     background(#445219);
     for (int i=1; i<13; i++) {
       line(0, 64*i, 832, 64*i); 
