@@ -33,7 +33,9 @@ public class Spielfeld{
   }
   
   void setze_figur(int feld_x,int feld_y){
-    if 
+    if (ist_feld_besetzt(feld_x, feld_y)){
+      return;
+    }
     if (state_als_letztes_gesetzt==2){
       spielfeld[feld_x][feld_y] = 1;
       state_als_letztes_gesetzt = 1;
