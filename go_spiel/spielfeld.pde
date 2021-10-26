@@ -67,13 +67,13 @@ public class Spielfeld {
           int zahl = spielfeld[j][i];    // Zahl 1: Weisser Stein; Zahl 2: Schwarzer Stein
           for(int i_umliegend=i-1; i_umliegend<i+1; i_umliegend++){     // Die Reihe über dem Stein, von dem Stein und unter dem Stein durchgehen
             for(int j_umliegend=j-1; j_umliegend<j+1; j_umliegend++){  // Die Spalte links dem Stein, von dem Stein und rechts dem Stein durchgehen
-              if(i_umliegend==i && j_umliegend==j){    // Wenn der zu überprüfende Stein der eigentliche stein in der Mitte ist
+              if((i_umliegend==i && j_umliegend==j) || i_umliegend>=13 || i_umliegend<0 || j_umliegend>=13 || j_umliegend<0 ){    // Wenn der zu überprüfende Stein der eigentliche stein in der Mitte ist
                 continue;
               }
               else{
                 if (spielfeld[j_umliegend][i_umliegend]==zahl){
                   if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j,i,j_umliegend,i_umliegend, zahl) || ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j_umliegend,i_umliegend,j,i, zahl)){
-                      print("GEWINN!!"); //<>//
+                      // Gewinn //<>//
                       setup(); // Restart the program
                   }
                 }
@@ -81,7 +81,7 @@ public class Spielfeld {
             }
           }
         }
-        }
+      }
     }
   }
 
@@ -101,7 +101,7 @@ public class Spielfeld {
     gewinnueberpruefung(feld_x, feld_y);
   }
 
-
+/*
   void print_spielfeld() {
     for (int i=0; i<13; i++) {
       for (int j=0; j<13; j++) {
@@ -111,6 +111,7 @@ public class Spielfeld {
       print("\n");
     }
   }
+*/
   void print_figur_2(int feld_x,int feld_y){
     fill(#000000);
     circle(feld_x*64+32,feld_y*64 +32,50);

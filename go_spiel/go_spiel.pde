@@ -3,7 +3,6 @@ Spielfeld spielfeld;
 void setup(){
   size(832,832);
   spielfeld = new Spielfeld();
-  spielfeld.print_spielfeld();
 }
 
 void draw(){
