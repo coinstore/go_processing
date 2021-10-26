@@ -1,4 +1,5 @@
 void setup(){
+  size(832,832);
   Spielfeld spielfeld = new Spielfeld();
   
   spielfeld.setze_figur(1,2);
