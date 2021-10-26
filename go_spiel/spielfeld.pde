@@ -31,6 +31,7 @@ public class Spielfeld {
   }
 
   boolean ist_feld_besetzt(int feld_x, int feld_y) {
+    // hello
     if (spielfeld[feld_x][feld_y]==0) {
       return false;
     }
