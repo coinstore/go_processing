@@ -64,14 +64,15 @@ public class Spielfeld {
               }
               else{
                 if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j,i,j_umliegend,i_umliegend, spielfeld[j][i])){
-                  if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j_umliegend,i_umliegend,j,i spielfeld[j][i])){
+                  if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j_umliegend,i_umliegend,j,i, spielfeld[j][i])){
                     print("GEWINN!!");
+                  }
                 }
               }
             }
           }
         }
-      }
+        }
     }
   }
 
@@ -88,6 +89,7 @@ public class Spielfeld {
       state_als_letztes_gesetzt = 2;
       print_figur_2(feld_x, feld_y);
     }
+    gewinnueberpruefung(feld_x, feld_y);
   }
 
 
