@@ -37,11 +37,19 @@ public class Spielfeld {
   }
   
   boolean ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(int feld_x_1, int feld_y_1, int feld_x_2, int feld_y_2, int zahl){
-    for(int i=0; i<3; i++){
-      int feld_zu_ueberpruefen_x = feld_x_1+(feld_x_1-feld_x_2);
-      int feld_zu_ueberpruefen_y = feld_y_1+(feld_y_1-feld_y_2);
+    for(int i=0; i<3; i++){ //<>//
+      int feld_zu_ueberpruefen_x = feld_x_2+(feld_x_2-feld_x_1);
+      int feld_zu_ueberpruefen_y = feld_y_2+(feld_y_2-feld_y_1);
+      
+      if (feld_zu_ueberpruefen_x<0 || feld_zu_ueberpruefen_y<0 || feld_zu_ueberpruefen_x>=13 || feld_zu_ueberpruefen_y>=13){
+        return false;
+      }
       
       if(spielfeld[feld_zu_ueberpruefen_x][feld_zu_ueberpruefen_y]==zahl){
+        feld_x_1 = feld_x_2;
+        feld_y_1 = feld_y_2;
+        feld_x_2 = feld_zu_ueberpruefen_x;
+        feld_y_2 = feld_zu_ueberpruefen_y;
         continue;
       }
       else{
@@ -53,19 +61,20 @@ public class Spielfeld {
   
   
   void gewinnueberpruefung(int feld_x, int feld_y){
-    for (int i=0; i<13; i++) {
-      for (int j=0; j<13; j++) {
-        if(spielfeld[j][i]!=0){
-          int zahl = spielfeld[j][i];
-          for(int i_umliegend=i-1; i_umliegend<i+1; i_umliegend++){
-            for(int j_umliegend=j-1; j_umliegend<j+1; j_umliegend++){
-              if(i_umliegend==i && j_umliegend==j){
+    for (int i=0; i<13; i++) {  // Für jede reihe
+      for (int j=0; j<13; j++) {    // Für jede Spalte
+        if(spielfeld[j][i]!=0){    // Nur ausführen, wenn auf dem Feld ein Stein liegt
+          int zahl = spielfeld[j][i];    // Zahl 1: Weisser Stein; Zahl 2: Schwarzer Stein
+          for(int i_umliegend=i-1; i_umliegend<i+1; i_umliegend++){     // Die Reihe über dem Stein, von dem Stein und unter dem Stein durchgehen
+            for(int j_umliegend=j-1; j_umliegend<j+1; j_umliegend++){  // Die Spalte links dem Stein, von dem Stein und rechts dem Stein durchgehen
+              if(i_umliegend==i && j_umliegend==j){    // Wenn der zu überprüfende Stein der eigentliche stein in der Mitte ist
                 continue;
               }
               else{
-                if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j,i,j_umliegend,i_umliegend, spielfeld[j][i])){
-                  if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j_umliegend,i_umliegend,j,i, spielfeld[j][i])){
-                    print("GEWINN!!");
+                if (spielfeld[j_umliegend][i_umliegend]==zahl){
+                  if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j,i,j_umliegend,i_umliegend, zahl) || ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j_umliegend,i_umliegend,j,i, zahl)){
+                      print("GEWINN!!"); //<>//
+                      setup(); // Restart the program
                   }
                 }
               }
