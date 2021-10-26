@@ -1,5 +1,4 @@
 public class Spielfeld {
-  int state=0;
   int[][] spielfeld;
 
   int state_als_letztes_gesetzt = 2;
@@ -31,7 +30,6 @@ public class Spielfeld {
   }
 
   boolean ist_feld_besetzt(int feld_x, int feld_y) {
-    // hello
     if (spielfeld[feld_x][feld_y]==0) {
       return false;
     }
@@ -45,9 +43,11 @@ public class Spielfeld {
     if (state_als_letztes_gesetzt==2) {
       spielfeld[feld_x][feld_y] = 1;
       state_als_letztes_gesetzt = 1;
+      print_figur_1(feld_x, feld_y);
     } else {
       spielfeld[feld_x][feld_y] = 2;
       state_als_letztes_gesetzt = 2;
+      print_figur_2(feld_x, feld_y);
     }
   }
 
@@ -60,5 +60,13 @@ public class Spielfeld {
       }
       print("\n");
     }
+  }
+  void print_figur_2(int feld_x,int feld_y){
+    fill(#000000);
+    circle(feld_x*64+32,feld_y*64 +32,50);
+  }
+  void print_figur_1(int feld_x,int feld_y){
+    fill(#ffffff);
+    circle(feld_x*64 +32,feld_y*64 +32,50);
   }
 }  
