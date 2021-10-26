@@ -35,6 +35,45 @@ public class Spielfeld {
     }
     return true;
   }
+  
+  boolean ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(int feld_x_1, int feld_y_1, int feld_x_2, int feld_y_2, int zahl){
+    for(int i=0; i<3; i++){
+      int feld_zu_ueberpruefen_x = feld_x_1+(feld_x_1-feld_x_2);
+      int feld_zu_ueberpruefen_y = feld_y_1+(feld_y_1-feld_y_2);
+      
+      if(spielfeld[feld_zu_ueberpruefen_x][feld_zu_ueberpruefen_y]==zahl){
+        continue;
+      }
+      else{
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  
+  void gewinnueberpruefung(int feld_x, int feld_y){
+    for (int i=0; i<13; i++) {
+      for (int j=0; j<13; j++) {
+        if(spielfeld[j][i]!=0){
+          int zahl = spielfeld[j][i];
+          for(int i_umliegend=i-1; i_umliegend<i+1; i_umliegend++){
+            for(int j_umliegend=j-1; j_umliegend<j+1; j_umliegend++){
+              if(i_umliegend==i && j_umliegend==j){
+                continue;
+              }
+              else{
+                if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j,i,j_umliegend,i_umliegend, spielfeld[j][i])){
+                  if(ueberpruefe_zwei_zusammenliegende_felder_auf_gewinn(j_umliegend,i_umliegend,j,i spielfeld[j][i])){
+                    print("GEWINN!!");
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 
   void setze_figur(int feld_x, int feld_y) {
     if (ist_feld_besetzt(feld_x, feld_y)) {
