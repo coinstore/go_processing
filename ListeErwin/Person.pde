@@ -4,7 +4,7 @@ class Person {
   String adresse;
   String name;
   
-  public Person(){
+  public Person(int pKundennr, ){
   
   }
 }

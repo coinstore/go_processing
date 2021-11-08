@@ -1,8 +1,9 @@
 public class Element {
   Person person;
-  Element element;
+  Element next;
   
   public Element(){
   
   }
+  
 }
