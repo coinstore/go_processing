@@ -14,6 +14,6 @@ class Person{
   }
   
   String ausgabe() {
-    return kunden_nr+" "+name+", "+telefonnummer;
+    return kunden_nr+" "+name+", "+telefonnummer+", "+adresse+", "+bestellung;
   }
 }

@@ -16,7 +16,7 @@ class LinListe {
     return aktuell.person;
   }
   
-  boolean geht_liste_weiter(){
+  boolean hasAccess(){
     if(aktuell==null){
       return false; 
     }
