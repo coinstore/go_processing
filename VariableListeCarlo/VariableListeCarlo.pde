@@ -1,13 +1,17 @@
-String input="";
+
 LinListe liste;
 void setup() {
 
   liste = new LinListe();
-  /*Person person1 = new Person(1111, "00491522", "chris", "ahornweg 7", "gras");
-  Person person2 = new Person(2222, "00491522", "chris", "ahornweg 7", "gras");
+  //Person person1 = new Person(1111, "00491522", "chris", "ahornweg 7", "gras");
+  //Person person2 = new Person(2222, "00491522", "chris", "ahornweg 7", "gras");
+  //liste.add(person2);
+  //liste.add(person1);
+  liste.import_from_excel("s.csv");
+  /*
 
-  liste.add(person1);
-  liste.add(person2);
+  
+  
 
   liste.to_first();
   println(liste.get_content().ausgabe());
@@ -18,7 +22,7 @@ void setup() {
 void draw() {
 }
 
-
+String input="";
 int state = 0;    // State==0 -> Normaler modus, man kann 1 oder 2 eingeben; state>=1 -> Eingabe modus, ein neuer benutzer wird eingegeben
 String p_telefonnummer;
 String p_name;
